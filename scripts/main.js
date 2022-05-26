@@ -1,6 +1,8 @@
 window.onkeyup = keyup;
 window.onload = loaded;
 
+const isMobile = window.innerWidth <= 480;
+console.log(screen.width);
 const history = [];
 const formatOptions = {
     weekday: 'short', 
@@ -30,13 +32,18 @@ const motd = [
 var isPrinting = false;
 
 function loaded() {
-    document.cookie = new Date();
-    printOut(motd, 0, 80);
+    if (isMobile) {
+        $('#output').html("<span id='highlight'>This Terminal is (currently) not supported on mobile devices.</span>");
+        $('#user').remove();
+    } else {
+        document.cookie = new Date();
+        printOut(motd, 0, 80);
+    }
 }
 
 function keyup(e) {
     var input = e.target.value.split(/(\s+)/);
-    if (input.length == 0 || isPrinting) return;
+    if (input.length == 0 || isPrinting || isMobile) return;
     var first = input[0];
     // command history (arrow-up)
     if (e.keyCode == 38) {
