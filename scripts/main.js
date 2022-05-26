@@ -1,8 +1,8 @@
 window.onkeyup = keyup;
 window.onload = loaded;
 
-const isMobile = window.innerWidth <= 480;
-console.log(screen.width);
+const isMobile = window.innerWidth < 600;
+console.log(window.innerWidth);
 const history = [];
 const formatOptions = {
     weekday: 'short', 
