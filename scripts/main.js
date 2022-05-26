@@ -45,10 +45,12 @@ function loaded() {
     } else {
         document.cookie = new Date();
         printOut(motd, 0, 80);
+        document.getElementById("input").focus()
     }
 }
 
 function keyup(e) {
+    document.getElementById("input").focus()
     var input = e.target.value.replace(/</g, "&lt;").replace(/>/g, "&gt;").split(/(\s+)/);
     if (input.length == 0 || isPrinting || isMobile) return;
     var first = input[0];
