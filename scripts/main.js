@@ -1,8 +1,15 @@
 window.onkeyup = keyup;
 window.onload = loaded;
 
-const isMobile = window.innerWidth < 600 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-console.log(window.innerWidth);
+const isMobile = 
+// check window with
+window.innerWidth < 480 || 
+// check user agent
+/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+// check with MediaQueryList
+window.matchMedia("only screen and (max-width: 480px)").matches;
+
+
 const history = [];
 const formatOptions = {
     weekday: 'short', 
