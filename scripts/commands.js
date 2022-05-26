@@ -1,3 +1,8 @@
+const ls = [
+    "<span id='highlight'>How_to_run_-_Slashy_Docs.zip      funnyaxolotl.gif    moon.png        alphas-nudes_HIGH-RES.jpg       javadiscord.net.txt</span>",
+    "<br>",
+]
+
 const help = [
     "<br>",
     "<span id='command'>help                  </span>Shows a list with all commands",

@@ -90,6 +90,10 @@ function checkInput(input) {
             window.open("https://youtu.be/OTo73Zf-Bvo", '_blank');
         break;
 
+        case "ls":
+            printOut(ls, 0, 80);
+        break;
+
         default: 
             $('#output').append("Command \'<span id='command'>" + input[0] + "</span>\' not found. For a list of commands, type '<span id='command'>help</span>'.<br><br>");
     }
