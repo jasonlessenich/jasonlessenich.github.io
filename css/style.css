@@ -8,7 +8,7 @@
 
 * {
     font-size: 16px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace, 'Courier New', Courier;
     background-color: var(--background-color);
     color: var(--text-color);
 }
@@ -31,6 +31,10 @@ body {
 #highlight {
     color: var(--highlight-color);
     text-shadow: 0 0 5px var(--highlight-color)
+}
+
+#text {
+    color: var(--highlight-color);
 }
 
 span {
