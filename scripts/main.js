@@ -2,7 +2,20 @@ window.onkeyup = keyup;
 window.onload = loaded;
 
 const history = [];
+const formatOptions = {
+    weekday: 'short', 
+    month: 'short', 
+    day: '2-digit', 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    second: '2-digit', 
+    year: 'numeric'
+}
 var historyPointer = 1;
+var lastLogin = document.cookie;
+if (!lastLogin) {
+    lastLogin = new Date();
+}
 
 const motd = [
 "<span id='highlight'>██████╗ ██╗   ██╗███╗   ██╗██╗  ██╗███████╗████████╗██╗   ██╗</span>",
@@ -12,12 +25,13 @@ const motd = [
 "<span id='highlight'>██████╔╝   ██║   ██║ ╚████║██╔╝ ██╗███████║   ██║      ██║   </span>",
 "<span id='highlight'>╚═════╝    ╚═╝   ╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   </span>",
 "<br>",
-"<span class='typewriter'>Last login: Wed May 25 20:55:47 2022 from 145.254.125.48</span><br>"
+"<span class='typewriter'>Last login: " + new Intl.DateTimeFormat('en', formatOptions).format(Date.parse(lastLogin)) + "</span><br>"
 ];
 var isPrinting = false;
 
 function loaded() {
- printOut(motd, 0, 80);
+    document.cookie = new Date();
+    printOut(motd, 0, 80);
 }
 
 function keyup(e) {
