@@ -4,7 +4,7 @@ const help = [
     "<span id='command'>whois                 </span>Who am I?",
     "<span id='command'>social                </span>Lists all my social networks",
     "<span id='command'>projects              </span>Displays all my recent projects",
-    "<span id='command'>motd                  </span>Displays the motto of the day (banner)",
+    "<span id='command'>motd                  </span>Displays the message of the day (banner)",
     "<span id='command'>clear                 </span>Clears the terminal",
     "<br>",
     "Use <span id='highlight'>sudo</span> for root privileges.",
