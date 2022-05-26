@@ -7,12 +7,13 @@ const help = [
     "<span id='command'>motd                  </span>Displays the motto of the day (banner)",
     "<span id='command'>clear                 </span>Clears the terminal",
     "<br>",
-    "Use <span id='highlight'>sudo</span> for admin privileges.",
+    "Use <span id='highlight'>sudo</span> for root privileges.",
     "<br>"
 ]
 
 const social = [
     "<br>",
+    "<span id='highlight'>My Socials 🌐</span>",
     "<span id='highlight'>discord           </span>dynxsty#7666",
     "<span id='highlight'>twitter           </span><a id='link' href='https://twitter.com/Dynxstyyyy' target='_blank'>https://twitter.com/Dynxstyyyy</a>",
     "<span id='highlight'>reddit            </span><a id='link' href='https://www.reddit.com/user/Dynxsty-' target='_blank'>https://www.reddit.com/user/Dynxsty-</a>",
