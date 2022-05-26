@@ -49,7 +49,7 @@ function loaded() {
 }
 
 function keyup(e) {
-    var input = e.target.value.split(/(\s+)/);
+    var input = e.target.value.replace(/</g, "&lt;").replace(/>/g, "&gt;").split(/(\s+)/);
     if (input.length == 0 || isPrinting || isMobile) return;
     var first = input[0];
     // command history (arrow-up)
