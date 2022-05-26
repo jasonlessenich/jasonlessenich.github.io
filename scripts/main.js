@@ -21,10 +21,6 @@ function loaded() {
 }
 
 function keyup(e) {
-   handleInput(e);
-}
-
-async function handleInput(e) {
     var input = e.target.value.split(/(\s+)/);
     if (input.length == 0 || isPrinting) return;
     var first = input[0];
