@@ -45,7 +45,6 @@ function keyup(e) {
 }
 
 function checkInput(input) {
-    isPrinting = true;
     switch (input[0]) {
         case "help": 
             printOut(help, 0, 80);
@@ -72,6 +71,7 @@ function checkInput(input) {
             $('#output').html("");
         break;
     
+        // top secret
         case "sudo":
             window.open("https://youtu.be/OTo73Zf-Bvo", '_blank');
         break;
@@ -79,11 +79,11 @@ function checkInput(input) {
         default: 
             $('#output').append("Command \'<span id='command'>" + input[0] + "</span>\' not found. For a list of commands, type '<span id='command'>help</span>'.<br><br>");
     }
-    isPrinting = false;
 }
 
 function printOut(arr, index, interval) {
     if (index < arr.length) {
+        isPrinting = true;
         $('#output').append(arr[index++] + "<br>");
         setTimeout(function() { printOut(arr, index, interval); }, interval)
     } else {
