@@ -75,7 +75,7 @@ function keyup(e) {
 }
 
 function checkInput(input) {
-    switch (input[0]) {
+    switch (input[0].toLowerCase()) {
         case "help": 
             printOut(help, 0, 80);
         break;
