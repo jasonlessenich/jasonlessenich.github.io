@@ -1,7 +1,7 @@
 window.onkeyup = keyup;
 window.onload = loaded;
 
-const isMobile = 
+let isMobile =  //has to be a let, as window size might differ, while the js has already declared the const
 // check window with
 window.innerWidth < 480 || 
 // check user agent
