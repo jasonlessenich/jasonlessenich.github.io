@@ -66,7 +66,7 @@ function keyup(e) {
         if (e.keyCode == 13) {
             history.push(e.target.value);
             historyPointer = 0;
-            $('#output').append("<span id='user'>user@dynxstygit.github.io:~$</span> " + e.target.value + "<br>");
+            $('#output').append("<span id='user'>user@dynxsty.xyz:~$</span> " + e.target.value + "<br>");
             $('#input').val('');
             checkInput(input);
             $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
