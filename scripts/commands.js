@@ -19,6 +19,7 @@ const help = [
 const social = [
     "<br>",
     "<span id='highlight'>My Socials 🌐</span>",
+    "<br>",
     "<span id='highlight'>discord           </span>dynxsty#7666",
     "<span id='highlight'>twitter           </span><a id='link' href='https://twitter.com/Dynxstyyyy' target='_blank'>https://twitter.com/Dynxstyyyy</a>",
     "<span id='highlight'>reddit            </span><a id='link' href='https://www.reddit.com/user/Dynxsty-' target='_blank'>https://www.reddit.com/user/Dynxsty-</a>",
