@@ -43,8 +43,8 @@ function loaded() {
         $('#output').html("<span id='highlight'>This Terminal is (currently) not supported on mobile devices.</span>");
         $('#user').remove();
     } else {
-        document.cookie = new Date();
         printOut(motd, 0, 80);
+        document.cookie = new Date();
         document.getElementById("input").focus()
     }
 }
