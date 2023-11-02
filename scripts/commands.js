@@ -34,25 +34,3 @@ const whois = [
     "Coming soon!",
     "<br>"
 ]
-
-const projects = [
-    "<br>",
-    "<span id='highlight'>Recent Projects 👨‍💻</span>",
-    "<br>",
-    "<a id='link' href='https://github.com/DynxstyGIT/DIH4JDA' target='_blank'>DIH4JDA</a>",
-    "<span id='text'>DIH4JDA is my attempt of making the process of creating a Discord Bot (with the JDA) a lot easier!</span>",
-    "<span id='text'>Since Discord introduced Slash Commands, they were always a hassle to set-up and integrate into your code.</span>",
-    "<span id='text'>The goal of this so-called \"interaction handler\" is to simplify and enhance the way not only slash commands,</span>",
-    "<span id='text'>but also context menus and message interactions are implemented and handled.</span>",
-    "<br>",
-    "<a id='link' href='https://github.com/DynxstyGIT/DSBMobileBot' target='_blank'>DSBMobileBot</a>",
-    "<span id='text'>The DSBMobileBot is a simple Discord Bot which I mainly just made for fun. It uses the DSBMobile API to</span>",
-    "<span id='text'>periodically retrieve all the current timetables of my school and sends them into a specified text channel.</span>",
-    "<br>",
-    "<a id='link' href='https://github.com/DynxstyGIT/MountEverestRadio' target='_blank'>MountEverestRadio</a>",
-    "<span id='text'>With Rythm and other public music bots going down, me and my friends lost the ability to listen to music together.</span>",
-    "(which wasn't even that bad tbh, lol)",
-    "<span id='text'>MountEverestRadio is a self-made music bot, which allowed us to exactly do that again.</span>",
-    "(Could've just used any other open-source music bot, but thats boring)",
-    "<br>"
-]

@@ -55,11 +55,12 @@ function keyup(e) {
     if (input.length == 0 || isPrinting || isMobile) return;
     var first = input[0];
     // command history (arrow-up)
-    if (e.keyCode == 38) {
-        var element = history.length - historyPointer - 1;
+    if (e.keyCode == 38 || e.keyCode == 40) {
+        var keyVal = e.keyCode == 38 ? -1 : 1;
+        var element = history.length - historyPointer + keyVal;
         if (history[element]) {
             $('#input').val(history[element]);
-            historyPointer++;
+            historyPointer += (keyVal * -1);
         }
     // check command (enter)
     } else if (first && first !== "") {
@@ -86,10 +87,6 @@ function checkInput(input) {
 
         case "social":
             printOut(social, 0, 80);
-        break;
-
-        case "projects":
-            printOut(projects, 0, 80);
         break;
 
         case "motd":
