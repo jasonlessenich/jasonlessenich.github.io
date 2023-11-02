@@ -119,6 +119,7 @@ function printOut(arr, index, interval) {
     if (index < arr.length) {
         isPrinting = true;
         $('#output').append(arr[index++] + "<br>");
+        window.scrollTo(0, document.body.scrollHeight);
         setTimeout(function() { printOut(arr, index, interval); }, interval)
     } else {
         isPrinting = false;
