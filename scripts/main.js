@@ -45,15 +45,16 @@ function loaded() {
     } else {
         printOut(motd, 0, 80);
         document.cookie = new Date();
-        document.getElementById("input").focus()
+        requestFocus();
     }
 }
 
 function keyup(e) {
-    document.getElementById("input").focus()
-    var input = e.target.value.replace(/</g, "&lt;").replace(/>/g, "&gt;").split(/(\s+)/);
-    if (input.length == 0 || isPrinting || isMobile) return;
-    var first = input[0];
+    requestFocus();
+    var sanitizedInput = e.target.value.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    var split = sanitizedInput.split(/(\s+)/);
+    if (split.length == 0 || isPrinting || isMobile) return;
+    var first = split[0];
     // command history (arrow-up)
     if (e.keyCode == 38 || e.keyCode == 40) {
         var keyVal = e.keyCode == 38 ? -1 : 1;
@@ -67,9 +68,9 @@ function keyup(e) {
         if (e.keyCode == 13) {
             history.push(e.target.value);
             historyPointer = 0;
-            $('#output').append("<span id='user'>user@dynxsty.xyz:~$</span> " + e.target.value + "<br>");
+            $('#output').append("<span id='user'>user@dynxsty.xyz:~$</span> " + sanitizedInput + "<br>");
             $('#input').val('');
-            checkInput(input);
+            checkInput(split);
             $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
         }
     }
@@ -110,6 +111,10 @@ function checkInput(input) {
         default: 
             $('#output').append("Command \'<span id='command'>" + input[0] + "</span>\' not found. For a list of commands, type '<span id='command'>help</span>'.<br><br>");
     }
+}
+
+function requestFocus() {
+    document.getElementById("input").focus();
 }
 
 function printOut(arr, index, interval) {
