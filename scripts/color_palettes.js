@@ -63,7 +63,17 @@ const light = new ColorPalette(
   "#FFFFFF" // Background
 );
 
-const palettes = [dark, light];
+const midnight = new ColorPalette(
+  "Midnight Serenade",
+  "midnight",
+  "#3D3D3D", // Primary
+  "#2F5E75", // Secondary
+  "#C2C2C2", // Text
+  "#666666", // Highlight
+  "#080808" // Background
+);
+
+const palettes = [dark, light, midnight];
 
 /**
  * Gets the color palette with the given short name.

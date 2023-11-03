@@ -18,7 +18,7 @@ const sudo = new Command("sudo", () => {
 const ls = new Command("ls", () =>
   printOut(
     [
-      "<span id='highlight'>How_to_run_-_Slashy_Docs.zip      alphas-nudes_HIGH-RES.jpg       javadiscord.net.txt</span>",
+      "<span id='command'>How_to_run_-_Slashy_Docs.zip      alphas-nudes_HIGH-RES.jpg       javadiscord.net.txt</span>",
     ],
     0,
     80
@@ -55,7 +55,7 @@ const help = new Command("help", () =>
       "<span id='command'>help                  </span>Shows a list with all commands",
       "<span id='command'>whois                 </span>Who am I?",
       "<span id='command'>social                </span>Lists all my social networks",
-      "<span id='command'>theme <theme>         </span>Allows to change the theme",
+      "<span id='command'>theme <theme>                </span>Allows to change the theme",
       "<span id='command'>motd                  </span>Displays the message of the day (banner)",
       "<span id='command'>clear                 </span>Clears the terminal",
       "<br>",
