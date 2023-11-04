@@ -79,7 +79,6 @@ const help = new Command("help", () =>
       `${SpanUtils.command("clear               ")} Clears the terminal`,
       "<br>",
       "Use <span id='highlight'>sudo</span> for root privileges.",
-      "<br>",
     ],
     0,
     80
@@ -118,7 +117,7 @@ const social = new Command("social", () =>
  */
 const whois = new Command("whois", () =>
   TerminalUtils.printOut(
-    [SpanUtils.highlight("Hey, I'm Jason 👋"), "Coming soon!", "<br>"],
+    [SpanUtils.highlight("Hey, I'm Jason 👋"), "Coming soon!"],
     0,
     80
   )
@@ -160,7 +159,6 @@ const theme = new Command("theme", (args) => {
       `${SpanUtils.command("▉")} (${palette.secondaryColor}, Secondary)`,
       `▉ (${palette.textColor}, Text)`,
       `${SpanUtils.highlight("▉")} (${palette.highlightColor}, Highlight)`,
-      "<br>",
     ],
     0,
     80
