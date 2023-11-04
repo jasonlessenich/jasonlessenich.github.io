@@ -27,20 +27,28 @@ class ColorPalette {
     this.highlightColor = highlightColor;
     this.backgroundColor = backgroundColor;
   }
-}
 
-/**
- * Applies the given color palette to the page.
- *
- * @param {ColorPalette} palette The color palette to apply.
- */
-function applyColorPalette(palette) {
-  var root = document.documentElement;
-  root.style.setProperty("--primary-color", palette.primaryColor);
-  root.style.setProperty("--secondary-color", palette.secondaryColor);
-  root.style.setProperty("--text-color", palette.textColor);
-  root.style.setProperty("--highlight-color", palette.highlightColor);
-  root.style.setProperty("--background-color", palette.backgroundColor);
+  static applySavedTerminalTheme() {
+    var theme = CookieData.getTheme();
+    if (theme) {
+      ColorPalette.applyTerminalTheme(theme);
+    }
+  }
+
+  /**
+   * Applies the given color theme to the page.
+   *
+   * @param {ColorPalette} theme The color theme to apply.
+   */
+  static applyTerminalTheme(theme) {
+    var root = document.documentElement;
+    root.style.setProperty("--primary-color", theme.primaryColor);
+    root.style.setProperty("--secondary-color", theme.secondaryColor);
+    root.style.setProperty("--text-color", theme.textColor);
+    root.style.setProperty("--highlight-color", theme.highlightColor);
+    root.style.setProperty("--background-color", theme.backgroundColor);
+    CookieData.updateTheme(theme.shortName);
+  }
 }
 
 const dark = new ColorPalette(
@@ -48,9 +56,9 @@ const dark = new ColorPalette(
   "dark",
   "#87E882", // Primary
   "#73A9FF", // Secondary
-  "#575656", // Text
+  "#949aa7", // Text
   "#A3A3A3", // Highlight
-  "#17191A" // Background
+  "#1e2127" // Background
 );
 
 const light = new ColorPalette(
@@ -60,16 +68,16 @@ const light = new ColorPalette(
   "#2474f2", // Secondary
   "#575656", // Text
   "#3b3b3b", // Highlight
-  "#FFFFFF" // Background
+  "#F9F9F9" // Background
 );
 
 const midnight = new ColorPalette(
   "Midnight Serenade",
   "midnight",
-  "#3D3D3D", // Primary
-  "#2F5E75", // Secondary
-  "#C2C2C2", // Text
-  "#666666", // Highlight
+  "#666666", // Primary
+  "#6A9Eb8", // Secondary
+  "#FFFFFF", // Text
+  "#A3A3A3", // Highlight
   "#080808" // Background
 );
 

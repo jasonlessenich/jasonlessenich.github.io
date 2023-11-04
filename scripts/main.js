@@ -2,13 +2,20 @@ window.onkeyup = keyup;
 window.onload = loaded;
 
 let historyPointer = 0;
-const history = [];
+let commandHistory = [];
 
 let isPrinting = false;
 
-let lastLogin = document.cookie;
-if (!lastLogin) {
-  lastLogin = new Date();
+const json = document.cookie;
+/**
+ * @type {CookieData?}
+ */
+let cookie;
+if (json && json !== "") {
+  console.log(json);
+  cookie = CookieData.fromJSON(json);
+  ColorPalette.applySavedTerminalTheme();
+  commandHistory.push(...CookieData.getHistory());
 }
 
 /**
@@ -17,18 +24,18 @@ if (!lastLogin) {
 function loaded() {
   if (isMobile) {
     $("#output").html(
-      "<span id='highlight'>This Terminal is (currently) not supported on mobile devices.</span>"
+      SpanUtils.highlight("This Terminal is (currently) not supported on mobile devices.")
     );
     $("#user").remove();
   } else {
     motd.callback();
-    document.cookie = new Date();
-    requestFocus();
+    CookieData.updateLastLogin(new Date());
+    TerminalUtils.requestFocus();
   }
 }
 
 function keyup(e) {
-  requestFocus();
+  TerminalUtils.requestFocus();
   let sanitizedInput = e.target.value
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
@@ -44,9 +51,9 @@ function keyup(e) {
 
 function handleHistory(e) {
   let keyVal = e.keyCode == 38 ? -1 : 1;
-  let element = history.length - historyPointer + keyVal;
-  if (history[element]) {
-    $("#input").val(history[element]);
+  let element = commandHistory.length - historyPointer + keyVal;
+  if (commandHistory[element]) {
+    $("#input").val(commandHistory[element]);
     historyPointer += keyVal * -1;
   }
 }
@@ -58,48 +65,26 @@ function handleHistory(e) {
  * @param {string} sanitizedInput
  */
 function handleCommand(split, sanitizedInput) {
-  history.push(sanitizedInput);
+  commandHistory.push(sanitizedInput);
   historyPointer = 0;
   $("#output").append(
-    `<span id='user'>user@dynxsty.xyz</span>:<span id='command'>~ $</span> ${sanitizedInput}<br>`
+    `${SpanUtils.user("user@dynxsty.xyz")}:${SpanUtils.command(
+      "~ $"
+    )} ${sanitizedInput}<br>`
   );
   $("#input").val("");
   const first = split.shift().toLowerCase();
   const cmd = getCommand(first);
   if (cmd === null) {
     $("#output").append(
-      `Command \'<span id='command'>${first}</span>\' not found. For a list of commands, type '<span id='command'>help</span>'.<br>`
+      `Command \'${SpanUtils.command(
+        first
+      )}\' not found. For a list of commands, type '${SpanUtils.command(
+        "help"
+      )}'.<br>`
     );
   } else {
     cmd.callback(split);
-    // TODO: update cookies
-    // cookies.insert();
   }
-}
-
-/**
- * Requests the focus for the input element.
- */
-function requestFocus() {
-  document.getElementById("input").focus();
-}
-
-/**
- * Prints out the given array with a typewriter effect.
- *
- * @param {string[]} arr The array to print out.
- * @param {number} index The current index.
- * @param {number} interval The interval between each item.
- */
-function printOut(arr, index, interval) {
-  if (index < arr.length) {
-    isPrinting = true;
-    $("#output").append(arr[index++] + "<br>");
-    $("html,body").animate({ scrollTop: document.body.scrollHeight }, "fast");
-    setTimeout(function () {
-      printOut(arr, index, interval);
-    }, interval);
-  } else {
-    isPrinting = false;
-  }
+  CookieData.updateHistory(commandHistory);
 }
