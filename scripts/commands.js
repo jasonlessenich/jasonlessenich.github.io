@@ -21,13 +21,10 @@ const sudo = new Command("sudo", () => {
  * The "ls" command.
  */
 const ls = new Command("ls", () =>
-  TerminalUtils.printOut(
-    [
-      SpanUtils.command(
-        "How_to_run_-_Slashy_Docs.zip      alphas-nudes_HIGH-RES.jpg       javadiscord.net.txt</span>"
-      ),
-    ],
-    0,
+  TerminalUtils.printOutSingle(
+    SpanUtils.command(
+      "How_to_run_-_Slashy_Docs.zip      alphas-nudes_HIGH-RES.jpg       javadiscord.net.txt</span>"
+    ),
     80
   )
 );
@@ -75,6 +72,7 @@ const help = new Command("help", () =>
       )} Lists all my social networks`,
       `${SpanUtils.command("theme [theme]       ")} Allows to change the theme`,
       `${SpanUtils.command("history (clear)     ")} Shows the command history`,
+      `${SpanUtils.command("search [query]      ")} Search something!`,
       `${SpanUtils.command(
         "motd                "
       )} Displays the message of the day (banner)`,
@@ -158,10 +156,10 @@ const theme = new Command("theme", (args) => {
   TerminalUtils.printOut(
     [
       `Changed theme to: ${SpanUtils.highlight(palette.displayName)}`,
-      `${SpanUtils.user("▉")} (Primary)`,
-      `${SpanUtils.command("▉")} (Secondary)`,
-      "▉ (Text)",
-      `${SpanUtils.highlight("▉")} (Highlight)`,
+      `${SpanUtils.user("▉")} (${palette.primaryColor}, Primary)`,
+      `${SpanUtils.command("▉")} (${palette.secondaryColor}, Secondary)`,
+      `▉ (${palette.textColor}, Text)`,
+      `${SpanUtils.highlight("▉")} (${palette.highlightColor}, Highlight)`,
       "<br>",
     ],
     0,
@@ -178,9 +176,8 @@ const history = new Command("history", (args) => {
     let amount = CookieData.getHistory().length;
     CookieData.updateHistory([]);
     commandHistory = [];
-    TerminalUtils.printOut(
-      [`Successfully cleared ${SpanUtils.highlight(amount)} commands`],
-      0,
+    TerminalUtils.printOutSingle(
+      `Successfully cleared ${SpanUtils.highlight(amount)} commands`,
       80
     );
     return;
@@ -198,7 +195,38 @@ const history = new Command("history", (args) => {
   );
 });
 
-const commands = [sudo, ls, clear, motd, help, social, whois, theme, history];
+const search = new Command("search", (args) => {
+  let query = args.join(" ");
+  if (!query || query === "") {
+    TerminalUtils.printOutSingle(
+      `# Usage: ${SpanUtils.highlight("search")} [query]`,
+      80
+    );
+    return;
+  }
+  let encoded = encodeURIComponent(query);
+  TerminalUtils.printOut(
+    [`Searching for \"${SpanUtils.highlight(query)}\"...`],
+    0,
+    80
+  );
+  setTimeout(() => {
+    window.open(`https://www.google.com/search?q=${encoded}`, "_blank");
+  }, 500);
+});
+
+const commands = [
+  sudo,
+  ls,
+  clear,
+  motd,
+  help,
+  social,
+  whois,
+  theme,
+  history,
+  search,
+];
 
 /**
  * @param {string} str The command's name.

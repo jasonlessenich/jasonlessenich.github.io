@@ -48,6 +48,10 @@ class TerminalUtils {
       isPrinting = false;
     }
   }
+
+  static printOutSingle(str, interval) {
+    return this.printOut([str], 0, interval);
+  }
 }
 
 class SpanUtils {
