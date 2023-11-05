@@ -12,8 +12,8 @@ const json = document.cookie;
  */
 let cookie;
 if (json && json !== "") {
-  console.log(json);
   cookie = CookieData.fromJSON(json);
+  console.table(cookie);
   ColorPalette.applySavedTerminalTheme();
   commandHistory.push(...CookieData.getHistory());
 }
@@ -22,16 +22,9 @@ if (json && json !== "") {
  * Called when the page is loaded.
  */
 function loaded() {
-  if (isMobile) {
-    $("#output").html(
-      SpanUtils.highlight("This Terminal is (currently) not supported on mobile devices.")
-    );
-    $("#user").remove();
-  } else {
-    motd.callback();
-    CookieData.updateLastLogin(new Date());
-    TerminalUtils.requestFocus();
-  }
+  motd.callback();
+  CookieData.updateLastLogin(new Date());
+  TerminalUtils.requestFocus();
 }
 
 function keyup(e) {
@@ -40,7 +33,7 @@ function keyup(e) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
   let split = sanitizedInput.split(/\s+/g);
-  if (split.length == 0 || isPrinting || isMobile) return;
+  if (split.length == 0 || isPrinting) return;
   let first = split[0];
   if (e.keyCode == 38 || e.keyCode == 40) {
     handleHistory(e);
