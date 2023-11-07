@@ -56,7 +56,7 @@ input {
 }
 
 input:focus {
-	caret-color: white;
+	caret-color: var(--text-color);
 	outline: none;
 	border: none;
 }
