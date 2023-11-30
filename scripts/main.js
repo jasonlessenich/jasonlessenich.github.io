@@ -61,7 +61,7 @@ function handleCommand(split, sanitizedInput) {
 	commandHistory.push(sanitizedInput);
 	historyPointer = 0;
 	$("#output").append(
-		`${SpanUtils.user("user@dynxsty.xyz")}:${SpanUtils.command(
+		`${SpanUtils.user("user@jasonlessenich.dev")}:${SpanUtils.command(
 			"~ $"
 		)} ${sanitizedInput}<br>`
 	);
