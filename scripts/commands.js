@@ -91,7 +91,7 @@ const help = new Command("help", () =>
 const social = new Command("social", () =>
 	TerminalUtils.printOut(
 		[
-			`${SpanUtils.command("discord           ")} dynxsty.json`,
+			`${SpanUtils.command("discord           ")} jasonlessenich`,
 			`${SpanUtils.command(
 				"twitter           "
 			)} <a id='link' href='https://twitter.com/jasonlessenich' target='_blank'>https://twitter.com/jasonlessenich</a>`,
