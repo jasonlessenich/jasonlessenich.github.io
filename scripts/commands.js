@@ -91,18 +91,16 @@ const help = new Command("help", () =>
 const social = new Command("social", () =>
 	TerminalUtils.printOut(
 		[
-			SpanUtils.highlight("My Socials 🌐"),
-			"<br>",
 			`${SpanUtils.command("discord           ")} dynxsty.json`,
 			`${SpanUtils.command(
 				"twitter           "
-			)} <a id='link' href='https://twitter.com/Dynxstyyyy' target='_blank'>https://twitter.com/dynxsty_json</a>`,
+			)} <a id='link' href='https://twitter.com/jasonlessenich' target='_blank'>https://twitter.com/jasonlessenich</a>`,
 			`${SpanUtils.command(
 				"reddit            "
 			)} <a id='link' href='https://www.reddit.com/user/Dynxsty-' target='_blank'>https://www.reddit.com/user/Dynxsty-</a>`,
 			`${SpanUtils.command(
 				"github            "
-			)} <a id='link' href='https://github.com/DynxstyGIT' target='_blank'>https://github.com/DynxstyGIT</a>`,
+			)} <a id='link' href='https://github.com/jasonlessenich' target='_blank'>https://github.com/jasonlessenich</a>`,
 			`${SpanUtils.command(
 				"steam             "
 			)} <a id='link' href='https://steamcommunity.com/id/dynxstyyy/' target='_blank'>https://steamcommunity.com/id/dynxstyyy/</a>`,
