@@ -23,7 +23,7 @@ const sudo = new Command("sudo", () => {
 const ls = new Command("ls", () =>
 	TerminalUtils.printOutSingle(
 		SpanUtils.command(
-			"How_to_run_-_Slashy_Docs.zip      alphas-nudes_HIGH-RES.jpg       javadiscord.net.txt</span>"
+			"How_to_run_-_Slashy_Docs.zip      javadiscord.net.txt</span>"
 		),
 		80
 	)
